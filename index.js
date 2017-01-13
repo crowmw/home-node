@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const ip = require('ip')
 
 const mqttBroker = require('./mqtt/mqttBroker')
+
 // var path = require("path")
 // var bodyParser = require("body-parser")
 // var mongodb = require("mongodb")
@@ -30,5 +31,6 @@ server.listen(port);
 console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
 
 //MOSCA Setup
-mqttBroker()
-module.exports = server
+var broker = mqttBroker()
+
+module.exports = {server, broker}
