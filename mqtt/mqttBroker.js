@@ -33,8 +33,7 @@ module.exports = () => {
     })
 
     function brokerReady(){
-        if(!process.env == 'test')
-            console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
+        console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
     }
 
     function clientConnected(){
@@ -44,5 +43,4 @@ module.exports = () => {
     function clientDisconnected(){
         console.log(chalk.gray(time()+ ' - ') + chalk.cyan(client.id) + '  ' + chalk.red('Disconnected'))
     }
-    return broker
 }  

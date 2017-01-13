@@ -3,16 +3,12 @@ const mqtt = require('mqtt')
 
 describe('Loading Express server', () => {
     var server
-    var broker
 
     beforeEach( () => {
-        var run = require('../../index')
-        server = run['server']
-        broker = run['broker']
+        server = require('../../server')
     })
 
     afterEach(() => {
-        broker.close()
         server.close()
     })
 
