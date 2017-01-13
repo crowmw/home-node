@@ -8,3 +8,5 @@ npm install
 npm start
 ```
 
+##Diagram
+[![home-node](https://dl.dropboxusercontent.com/u/26425880/home-node.png)](https://github.com/crowmw/home-node)
