@@ -18,15 +18,12 @@ module.exports = function(app) {
     }
 
     var broker = new mosca.Server(brokerSettings)
+    
     broker.on('ready', brokerReady)
 
-    broker.on('clientConnected', function(client) {
-        console.log(chalk.gray(time() + ' - ') + chalk.cyan(client.id)+ '  '+chalk.green('Connected'))
-    })
+    broker.on('clientConnected', clientConnected)
 
-    broker.on('clientDisconnected', function(client) {
-            console.log(chalk.gray(time()+ ' - ') + chalk.cyan(client.id) + '  ' + chalk.red('Disconnected'))
-    })
+    broker.on('clientDisconnected', clientDisconnected)
 
     broker.on('published', function(packet, client){
         switch(packet.topic) {
@@ -39,4 +36,11 @@ module.exports = function(app) {
         console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
     }
 
+    function clientConnected(){
+        console.log(chalk.gray(time() + ' - ') + chalk.cyan(client.id)+ '  '+chalk.green('Connected'))
+    }
+
+    function clientDisconnected(){
+        console.log(chalk.gray(time()+ ' - ') + chalk.cyan(client.id) + '  ' + chalk.red('Disconnected'))
+    }
 }
