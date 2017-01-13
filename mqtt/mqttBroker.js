@@ -1,5 +1,6 @@
 const mosca = require('mosca')
 const chalk = require('chalk')
+const ip = require('ip')
 const time = require('../utils/getTime')
 
 module.exports = function(app) {
@@ -35,7 +36,7 @@ module.exports = function(app) {
     })
 
     function brokerReady(){
-        console.log(chalk.cyan('MQTT Broker running on: ' + brokerPort))
+        console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
     }
 
 }

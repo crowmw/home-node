@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const chalk = require('chalk')
 const mongoose = require('mongoose')
+const ip = require('ip')
 
 const mqttBroker = require('./mqtt/mqttBroker')
 // var path = require("path")
@@ -26,7 +27,7 @@ app.use(bodyParser.json()) //parsowanie req to json
 const port = process.env.PORT || 8080;
 const server = http.createServer(app);
 server.listen(port);
-console.log(chalk.green('Server listening on: ' + port))
+console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
 
 //MOSCA Setup
 mqttBroker();
