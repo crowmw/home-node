@@ -20,7 +20,10 @@ mongoose.connect('mongodb://localhost:27017/home-node')
 
 //App Setup
 const app = express()
-app.use(morgan('combined')) //logowanie requestów
+
+if(!process.env == 'test')
+    app.use(morgan('combined')) //logowanie requestów
+
 app.use(express.static(__dirname + '/public')) 
 app.use(bodyParser.json()) //parsowanie req to json
 
@@ -28,7 +31,8 @@ app.use(bodyParser.json()) //parsowanie req to json
 const port = process.env.PORT || 8080;
 const server = http.createServer(app);
 server.listen(port);
-console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
+if(!process.env == 'test')
+    console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
 
 //MOSCA Setup
 var broker = mqttBroker()

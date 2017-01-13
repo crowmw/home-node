@@ -1,6 +1,5 @@
 const req = require('supertest')
 const mqtt = require('mqtt')
-const expected = require('expect')
 
 describe('Loading Express server', () => {
     var server
@@ -29,19 +28,17 @@ describe('Loading Express server', () => {
             .expect(404, done)
     })
 
-    it('Should have mqtt broker running', () => {
-        var client = mqtt.connect('mqtt://localhost:1883')
-        expected(client).toExist()
-        client.end()
-    })
+    // it('Should MQTT Broker run', () => {
+    //     broker.
+    // })
 
-    it('Should recieve mqtt publishes', () => {
-        broker.on('published', function(packet, client){
-            expected(packet.payload.toString()).toEqual('foo-bar')
-        })
+    // it('Should MQTT Broker recieve clients publishes', () => {
+    //     broker.on('published', function(packet, client){
+    //         // expected(packet.payload.toString()).toEqual('foo-bar')
+    //     })
 
-        var client = mqtt.connect('mqtt://localhost:1883')
-        client.publish('/home/hello', 'foo-bar')
-        client.end(() => {console.log('close')})
-    })
+    //     var client = mqtt.connect('mqtt://localhost:1883')
+    //     client.publish('/home/hello', 'foo-bar')
+    //     client.end(() => {console.log('close')})
+    // })
 })

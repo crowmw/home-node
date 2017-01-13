@@ -33,7 +33,8 @@ module.exports = () => {
     })
 
     function brokerReady(){
-        console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
+        if(!process.env == 'test')
+            console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
     }
 
     function clientConnected(){
