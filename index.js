@@ -30,7 +30,5 @@ server.listen(port);
 console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
 
 //MOSCA Setup
-mqttBroker();
-
-
-
+mqttBroker()
+module.exports = server

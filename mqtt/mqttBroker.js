@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const ip = require('ip')
 const time = require('../utils/getTime')
 
-module.exports = function(app) {
+module.exports = function() {
     const database = {
         type: 'mongo',
         url: 'mongodb://localhost:27017/home-node',
