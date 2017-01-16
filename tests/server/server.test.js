@@ -1,5 +1,6 @@
 const req = require('supertest')
 const mqtt = require('mqtt')
+const stats = require('./../../mqtt/stats')
 
 describe('Loading Express server', () => {
     var server

@@ -7,9 +7,11 @@ const chalk = require('chalk')
 const mongoose = require('mongoose')
 const ip = require('ip')
 
+const router = require('./router')
 const mqttBroker = require('./mqtt/mqttBroker')
 
 //DB Setup
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/home-node')
 
 //App Setup
@@ -18,7 +20,7 @@ const app = express()
 app.use(morgan('combined')) //logowanie requestów
 app.use(express.static(__dirname + '/public')) 
 app.use(bodyParser.json()) //parsowanie req to json
-
+router(app)
 
 const port = process.env.PORT || 8080;
 const server = http.createServer(app);
