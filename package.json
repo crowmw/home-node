@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha tests/**/*.test.js",
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "build": "webpack -p",
     "dev-app": "webpack-dev-server --open",
     "dev-api": "nodemon server.js",
     "test-client": "node ./clients/nodeJS/client.js"
