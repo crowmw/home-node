@@ -2,9 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-    devtool: '#source-map',
+    devtool: 'inline-source-map',
     context: path.resolve(__dirname, './app'),
-    entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    entry: ['webpack-hot-middleware/client?timeout=20000&reload=true',
             './index.js'],
     output: {
         path: path.resolve(__dirname, './public'),
@@ -14,7 +14,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin()
     ],
     module: {
         rules: [

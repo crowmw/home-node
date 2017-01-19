@@ -18,8 +18,7 @@ mongoose.connect('mongodb://localhost:27017/home-node')
 //App Setup
 const app = express()
 
-app.use(morgan('combined')) //logowanie requestów
-// app.use(express.static(__dirname + '/public')) 
+// app.use(morgan('combined')) //logowanie requestów
 app.use(bodyParser.json()) //parsowanie req to json
 
 const port = process.env.PORT || 8080;
@@ -34,14 +33,13 @@ if(process.env.NODE_ENV !== 'production') {
   }));
 
   app.use(require("webpack-hot-middleware")(compiler, {
-    log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+    log: console.log, heartbeat: 10 * 1000
   }));
 }
 
 router(app)
 const server = http.createServer(app);
 server.listen(port);
-
 console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
 
 //MOSCA Setup
