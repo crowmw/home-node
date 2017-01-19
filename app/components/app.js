@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 
 import * as action from './../actions/index'
 
+import Clock from './clock'
+
+import './../assets/styles/style.scss'
+import './style.scss'
+
 class App extends Component {
     componentWillMount(){
         console.log(this.props)
@@ -12,8 +17,8 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                Hello from React!
+            <div className='App'>
+                <Clock />
             </div>
         );
     }

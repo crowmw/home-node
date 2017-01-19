@@ -1,6 +1,5 @@
 const mosca = require('mosca')
 const express = require("express")
-const cors = require('cors')
 const http = require('http')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
