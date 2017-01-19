@@ -19,11 +19,11 @@ describe('Loading Express server', () => {
             .expect(200, done)
     })
 
-    it('Should respond 404 to everything else', (done) => {
-        req(server)
-            .get('/foo/bar')
-            .expect(404, done)
-    })
+    // it('Should respond 404 to everything else', (done) => {
+    //     req(server)
+    //         .get('/foo/bar')
+    //         .expect(404, done)
+    // })
 
     // it('Should MQTT Broker run', () => {
     //     broker.
