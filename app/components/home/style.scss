@@ -1,0 +1,44 @@
+@import "../../assets/styles/theme.scss";
+
+.Home {
+    color: $primary-color;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .home-icon {
+        font-size: 12em;
+    }
+    .content {
+        margin: -10px 0px 0px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .temp-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            
+        }
+
+        .humi-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .data {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .description {
+            color: $secondary-color;
+            font-size: 1em;
+            margin-top: -12px;
+        }
+    }
+
+}

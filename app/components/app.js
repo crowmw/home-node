@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 
 import * as action from './../actions/index'
 
+import Banner from './banner'
 import Clock from './clock'
+import Home from './home'
 
 import './../assets/styles/style.scss'
 import './style.scss'
@@ -18,7 +20,9 @@ class App extends Component {
     render() {
         return (
             <div className='App'>
+                <Banner text="IoT Home" />
                 <Clock />
+                <Home />
             </div>
         );
     }
