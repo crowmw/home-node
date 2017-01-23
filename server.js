@@ -17,18 +17,16 @@ mongoose.connect('mongodb://localhost:27017/home-node')
 //App Setup
 const app = express()
 
-// app.use(morgan('combined')) //logowanie requestów
+app.use(morgan('combined')) //logowanie requestów
 app.use(bodyParser.json()) //parsowanie req to json
 
 const port = process.env.PORT || 8080;
 
-console.log(process.env.NODE_ENV)
-if(process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if(process.env.NODE_ENV == 'test') {
     const webpack = require('webpack')
     const config = require('./webpack.config.js')
     const compiler = webpack(config)
-
-  app.use(require("webpack-dev-middleware")(compiler, {
+    app.use(require("webpack-dev-middleware")(compiler, {
     noInfo: true, publicPath: config.output.publicPath
   }));
 
