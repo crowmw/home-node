@@ -1,17 +1,23 @@
 @import "../../assets/styles/theme.scss";
 
-.Home {
+.Climate {
     color: $primary-color;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    margin-bottom: 20px;
 
-    .home-icon {
-        font-size: 12em;
+    .climate-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.8em;
+        margin: 0 auto;
+        max-width: 126px;
     }
     .content {
-        margin: -10px 0px 0px 30px;
+        margin: 0px 0px 0px 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;

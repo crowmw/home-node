@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment'
+import 'moment/locale/pl'
 import { connect } from 'react-redux'
 
 import './../../assets/styles/fonts.scss'
@@ -8,12 +9,13 @@ import './style.scss'
 class Clock extends Component {
     constructor(props) {
         super(props)
-        var now = moment().format('hh:mm:ss')
+        moment.locale()
+        var now = moment().format('LLLL')
         this.state = {time: now}
     }
 
     tick() {
-        var now = moment().format('hh:mm:ss')
+        var now = moment().format('LLLL')
         this.setState({time: now})
     }
     

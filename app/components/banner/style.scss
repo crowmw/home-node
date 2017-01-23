@@ -1,6 +1,9 @@
 @import "../../assets/styles/theme.scss";
 
 .Banner {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
     color: $primary-color;
     font-family: 'Leckeri One';
     font-size: 4em;
