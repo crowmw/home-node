@@ -4,7 +4,7 @@
   "description": "IoT Home automation, Node.Js, Express, MongoDB, Mosca,  React on MQTT protocol",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests/**/*.test.js",
+    "test": "SET NODE_ENV=test & mocha tests/**/*.test.js",
     "start": "SET NODE_ENV=dev & node server.js",
     "build": "webpack -p",
     "test-client": "node ./clients/nodeJS/client.js"

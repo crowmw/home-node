@@ -22,7 +22,8 @@ app.use(bodyParser.json()) //parsowanie req to json
 
 const port = process.env.PORT || 8080;
 
-if(process.env.NODE_ENV !== 'production') {
+console.log(process.env.NODE_ENV)
+if(process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     const webpack = require('webpack')
     const config = require('./webpack.config.js')
     const compiler = webpack(config)
