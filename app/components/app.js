@@ -13,14 +13,6 @@ import './../assets/styles/style.scss'
 import './style.scss'
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-        mqtt.publish('test', 'test')
-    }
-    componentWillMount(){
-        
-    }
-
     componentWillUnmount(){
         client.close();
     }

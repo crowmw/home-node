@@ -1,9 +1,9 @@
 import mqtt from 'mqtt'
 
 const options = {
-    clientId: 'react'
+    clientId: 'react_'+ Math.random().toString(16).substr(2, 8)
 }
 
-const mqttClient = mqtt.connect('ws://localhost:8080', options)
+const mqttClient = mqtt.connect('ws://192.168.1.58:8080', options)
 
 export default mqttClient

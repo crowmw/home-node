@@ -5,6 +5,8 @@ const time = require('./../utils/getTime')
 exports.clientConnected = (id) => {
     if(!id) return
 
+    if(id.startsWith('react')) return
+
     const client = Client.findOne({clientId: id.toLowerCase()}, (err, data) => {
         if(err) {console.error(err)}
         
@@ -42,6 +44,8 @@ exports.clientConnected = (id) => {
 
 exports.clientDisconnected = (id) => {
     if(!id) return
+
+    if(id.startsWith('react')) return
 
     const client = Client.findOne({clientId: id.toLowerCase()}, (err, data) => {
         if(err) {console.error(err)}
