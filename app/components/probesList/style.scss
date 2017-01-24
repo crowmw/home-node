@@ -1,0 +1,15 @@
+@import '../../assets/styles/theme.scss';
+
+.ProbesList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 1px solid $secondary-color;
+    margin-top: 10px;
+
+    .Probe {
+        padding: 10px 0px 10px 0px;
+        border-bottom: 1px solid $secondary-color;
+    }
+}

@@ -22,18 +22,18 @@ app.use(bodyParser.json()) //parsowanie req to json
 
 const port = process.env.PORT || 8080;
 
-if(process.env.NODE_ENV == 'test') {
-    const webpack = require('webpack')
-    const config = require('./webpack.config.js')
-    const compiler = webpack(config)
-    app.use(require("webpack-dev-middleware")(compiler, {
-    noInfo: true, publicPath: config.output.publicPath
-  }));
+const webpack = require('webpack')
+const config = require('./webpack.config.js')
+const compiler = webpack(config)
 
-  app.use(require("webpack-hot-middleware")(compiler, {
-    log: console.log, heartbeat: 10 * 1000
-  }));
-}
+app.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: true, publicPath: config.output.publicPath
+}));
+
+app.use(require("webpack-hot-middleware")(compiler, {
+  log: console.log, heartbeat: 10 * 1000
+}));
+
 
 router(app)
 const server = http.createServer(app);

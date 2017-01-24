@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment'
 import 'moment/locale/pl'
-import { connect } from 'react-redux'
 
 import './../../assets/styles/fonts.scss'
 import './style.scss'
