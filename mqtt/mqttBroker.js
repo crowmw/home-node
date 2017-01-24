@@ -5,7 +5,7 @@ const time = require('../utils/getTime')
 const stat = require('./stat')
 const client = require('./client')
 
-module.exports = () => {
+module.exports = (app) => {
     const database = {
         type: 'mongo',
         url: 'mongodb://localhost:27017/home-node',
@@ -20,6 +20,7 @@ module.exports = () => {
     }
 
     var broker = new mosca.Server(brokerSettings)
+    broker.attachHttpServer(app)
 
     broker.on('ready', brokerReady)
 

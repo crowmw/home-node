@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import mqtt from './mqttClient'
+
 import Banner from './banner'
 import Clock from './clock'
 import Climate from './climate'
@@ -11,8 +13,16 @@ import './../assets/styles/style.scss'
 import './style.scss'
 
 class App extends Component {
-    componentWillUpdate(){
+    constructor(props) {
+        super(props)
+        mqtt.publish('test', 'test')
+    }
+    componentWillMount(){
         
+    }
+
+    componentWillUnmount(){
+        client.close();
     }
 
     render() {

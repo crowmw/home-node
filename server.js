@@ -36,11 +36,12 @@ app.use(require("webpack-hot-middleware")(compiler, {
 
 
 router(app)
+
 const server = http.createServer(app);
+//MOSCA Setup
+mqttBroker(server)
+
 server.listen(port);
 console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
-
-//MOSCA Setup
-mqttBroker()
 
 module.exports = server
