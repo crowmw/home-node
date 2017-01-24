@@ -22,7 +22,7 @@ class RSwtich extends Component {
         return (
             <div className='Switch'>
                 <span className='text'>{this.props.name}</span>
-                <Switch onChange={(e)=>this.handleToggle(e)} />
+                <Switch onChange={(e)=>this.handleToggle(e)} checked={!!+this.props.value}/>
             </div>
         );
     }

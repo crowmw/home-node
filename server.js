@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/home-node')
 //App Setup
 const app = express()
 
-app.use(morgan('combined')) //logowanie requestów
+// app.use(morgan('combined')) //logowanie requestów
 app.use(bodyParser.json()) //parsowanie req to json
 
 const port = process.env.PORT || 8080;
