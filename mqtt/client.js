@@ -1,6 +1,6 @@
 const Client = require('./../models/client')
 const chalk = require('chalk')
-const time = require('./../utils/getTime')
+const moment = require('moment')
 
 exports.clientConnected = (id) => {
     if(!id) return
@@ -38,7 +38,7 @@ exports.clientConnected = (id) => {
                 }
             })
         }
-        return console.log(chalk.gray(time() + ' - ') + chalk.cyan(id)+ '  '+chalk.green('Connected'))
+        return console.log(chalk.gray(moment().format('DD.MM.YYYY hh:mm:ss') + ' - ') + chalk.cyan(id)+ '  '+chalk.green('Connected'))
     })
 }
 
@@ -60,6 +60,6 @@ exports.clientDisconnected = (id) => {
                 }
             })
         }
-        return console.log(chalk.gray(time()+ ' - ') + chalk.cyan(id) + '  ' + chalk.red('Disconnected'))
+        return console.log(chalk.gray(moment().format('DD.MM.YYYY hh:mm:ss') + ' - ') + chalk.cyan(id) + '  ' + chalk.red('Disconnected'))
     })
 }

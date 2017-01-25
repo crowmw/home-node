@@ -1,7 +1,7 @@
 const mosca = require('mosca')
 const chalk = require('chalk')
 const ip = require('ip')
-const time = require('../utils/getTime')
+const moment = require('moment')
 const stat = require('./stat')
 const client = require('./client')
 
@@ -19,7 +19,7 @@ module.exports = (app) => {
         backend: database
     }
 
-    var broker = new mosca.Server(brokerSettings)
+    let broker = new mosca.Server(brokerSettings)
     broker.attachHttpServer(app)
 
     broker.on('ready', brokerReady)
@@ -29,7 +29,7 @@ module.exports = (app) => {
     broker.on('clientDisconnected', clientDisconnected)
 
     broker.on('published', function(packet, client){
-        console.log(chalk.gray(time()+ ' - ') + chalk.blue(packet.topic)+'  ' + packet.payload.toString())
+        console.log(chalk.gray(moment().format('DD.MM.YYYY hh:mm:ss')+ ' - ') + chalk.blue(packet.topic)+'  ' + packet.payload.toString())
         switch(packet.topic) {
             case '/stat/weather':
                 stat.saveWeather(packet.payload.toString())
@@ -37,15 +37,15 @@ module.exports = (app) => {
         }
     })
 
-    function brokerReady(){
+    function brokerReady() {
         console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
     }
 
-    function clientConnected(clientId){
+    function clientConnected(clientId) {
         client.clientConnected(clientId.id)
     }
 
-    function clientDisconnected(clientId){
+    function clientDisconnected(clientId) {
         client.clientDisconnected(clientId.id)
     }
 }  
