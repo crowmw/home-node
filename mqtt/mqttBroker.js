@@ -8,7 +8,7 @@ const client = require('./client')
 module.exports = (app) => {
     const database = {
         type: 'mongo',
-        url: 'mongodb://localhost:27017/home-node',
+        url: 'mongodb://localhost:27017/mqtt',
         pubsubCollection: 'mqttBroker',
         mongo: {}
     }
