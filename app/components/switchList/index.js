@@ -20,32 +20,30 @@ class SwitchList extends Component {
             ]
         }
 
-        let subs = []
-        let switches = this.state.switches
-        for(let s of switches){
-            subs.push(s.name)
-        }
-        console.log(subs)
-
-        mqtt.subscribe(subs)
-
+        mqtt.subscribe('onoff/#')
 
         mqtt.on('message',(topic, message) => {
-            let switches = this.state.switches
-            for(let s of switches){
-                if(s.name === topic){
-                    s.value = message
-                    break
+            if(topic.includes('onoff/')){
+                let json = JSON.parse(message.toString())
+
+                let switches = this.state.switches
+                if(switches.length)
+                for(let s of switches){
+                    if(s.name === json.name){
+                        s.value = json.value
+                        break
+                    }
                 }
+                this.setState({switches})
             }
-            this.setState({switches})
         })
 
         this.handleToggleSwitch = this.handleToggleSwitch.bind(this)
     }
 
     handleToggleSwitch(button, value) {
-        mqtt.publish(button, value, {}, (err) => {
+        let jsonString = JSON.stringify({ name: button, value: value})
+        mqtt.publish('onoff/'+button, jsonString, {}, (err) => {
             if(err) {
                 console.error(err)
             } else {

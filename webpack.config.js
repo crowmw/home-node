@@ -37,18 +37,18 @@ module.exports = {
                     'sass-loader'
                 ]
             },
-            // {
-            //     test: /\.(woff|woff2|eot|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/,
-            //     loader: 'url-loader?limit=100000?name=/fonts/[ext]/[name].[ext]'
-            // },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader?limit=100000?name=/fonts/[ext]/[name].[ext]'
+            },
             {
                 test: /\.(jpe?g|png|gif|ico)$/i,
                 loader: "file-loader?name=/images/[ext]/[name].[ext]"
             },             
-            { 
-                test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-                loader: "file-loader?name=/fonts/[ext]/[name].[ext]" 
-            }
+            // { 
+            //     test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+            //     loader: "file-loader?name=/fonts/[ext]/[name].[ext]" 
+            // }
         ]
     }
 }

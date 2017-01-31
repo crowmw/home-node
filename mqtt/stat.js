@@ -7,8 +7,7 @@ exports.saveWeather = (payload) => {
     const weather = new Weather({
         temperature: json.temperature,
         humidity: json.humidity,
-        pressure: json.pressure,
-        probe: json.probe,
+        name: json.probe,
         updated: json.updated
     })
 

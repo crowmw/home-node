@@ -11,11 +11,15 @@ module.exports = (app) => {
         url: 'mongodb://localhost:27017/mqtt',
         pubsubCollection: 'mqttBroker',
         mongo: {
-                autoReconnect: true,
-                connectTimeoutMS: 12000,
-                socketTimeoutMS: 12000
+            server: {
+                socketOptions: {
+                    autoReconnect: true,
+                    connectTimeoutMS: 1200000,
+                    socketTimeoutMS: 1200000
+                }
             }
         }
+    }
 
     const brokerPort = 1883
     const brokerSettings = {
@@ -35,7 +39,7 @@ module.exports = (app) => {
     broker.on('published', function(packet, client){
         console.log(chalk.gray(moment().format('DD.MM.YYYY hh:mm:ss')+ ' - ') + chalk.blue(packet.topic)+'  ' + packet.payload.toString())
         switch(packet.topic) {
-            case '/stat/weather':
+            case 'stat/weather':
                 stat.saveWeather(packet.payload.toString())
                 break
         }

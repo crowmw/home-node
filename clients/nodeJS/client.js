@@ -6,9 +6,15 @@ client.on('connect', () => {
     let weather = {
         temperature: 25.00,
         humidity: 35.00,
-        pressure: 990,
-        probe: 'nodeJS',
+        name: 'nodeJS',
         updated: new Date().toLocaleString()
     }
-    client.publish('/stats/weather', JSON.stringify(weather))
+    client.publish('stat/weather', JSON.stringify(weather))
+    let weather1 = {
+        temperature: 20.00,
+        humidity: 30.00,
+        name: 'nodeJS',
+        updated: new Date().toLocaleString()
+    }
+    client.publish('stat/weather', JSON.stringify(weather1))
 })
