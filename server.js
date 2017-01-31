@@ -13,14 +13,15 @@ const mqttBroker = require('./mqtt/mqttBroker')
 //DB Setup
 mongoose.Promise = global.Promise;
 let options = {
-  socketOptions: {
-    autoReconnect: true,
-    connectTimeoutMS: 12000,
-    socketTimeoutMS: 12000
-  }
+  server: {
+    socketOptions: {
+        autoReconnect: true,
+        connectTimeoutMS: 1200000,
+        socketTimeoutMS: 1200000
+      }
+    }
 }
 mongoose.connect('mongodb://localhost:27017/home-node', options)
-
 //App Setup
 const app = express()
 

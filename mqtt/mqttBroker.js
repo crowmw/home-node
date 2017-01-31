@@ -12,8 +12,8 @@ module.exports = (app) => {
         pubsubCollection: 'mqttBroker',
         mongo: {
                 autoReconnect: true,
-                connectTimeoutMS: 120000,
-                socketTimeoutMS: 120000
+                connectTimeoutMS: 12000,
+                socketTimeoutMS: 12000
             }
         }
 
