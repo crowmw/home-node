@@ -10,8 +10,12 @@ module.exports = (app) => {
         type: 'mongo',
         url: 'mongodb://localhost:27017/mqtt',
         pubsubCollection: 'mqttBroker',
-        mongo: {}
-    }
+        mongo: {
+                autoReconnect: true,
+                connectTimeoutMS: 120000,
+                socketTimeoutMS: 120000
+            }
+        }
 
     const brokerPort = 1883
     const brokerSettings = {
