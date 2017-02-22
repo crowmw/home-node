@@ -5,7 +5,9 @@ import Divider from 'material-ui/Divider'
 import FontAwesome from 'react-fontawesome'
 import Switch from 'rc-switch'
 import Toggle from 'material-ui/Toggle'
-import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline';
+import LightbulbOutline from 'material-ui/svg-icons/action/lightbulb-outline'
+import Router from 'material-ui/svg-icons/hardware/router'
+import Exposure from 'material-ui/svg-icons/image/exposure'
 import Slider from 'material-ui/Slider'
 
 class ThingsList extends Component {
@@ -39,7 +41,7 @@ class ThingsList extends Component {
                         </div>
                     </ListItem>
                     <ListItem
-                        leftIcon={<LightbulbOutline />}
+                        leftIcon={<Exposure />}
                         disabled={true}
                         style={{paddingTop: '20px', height: '88px'}}
                         primaryText=" "
@@ -60,7 +62,7 @@ class ThingsList extends Component {
                     </div>
                     </ListItem>
                     <ListItem
-                        leftIcon={<LightbulbOutline />}
+                        leftIcon={<Router />}
                         disabled={true}
                         primaryText=" "
                         secondaryText=" "
