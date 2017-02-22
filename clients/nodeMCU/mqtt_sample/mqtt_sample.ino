@@ -1,20 +1,17 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+#include <ArduinoJson.h>
 
 // Update these with values suitable for your network.
 const char* ssid = "FunBox-F7AD";
 const char* password = "F59274F514763D9F63ED6115DC";
 const char* mqtt_server = "192.168.1.58";
-//const char* mqtt_server = "iot.eclipse.org";
 
-const int CLK = D6; //Set the CLK pin connection to the display
-const int DIO = D5; //Set the DIO pin connection to the display
+const int RelayPin = 4;
 
 WiFiClient espClient;
 PubSubClient client(espClient);
-long lastMsg = 0;
-char msg[50];
-int value = 0;
+
 void setup_wifi() {
    delay(100);
   // We start by connecting to a WiFi network
@@ -45,6 +42,26 @@ void callback(char* topic, byte* payload, unsigned int length)
   Serial.print(s);
   Serial.println();
   Serial.println();
+  
+  StaticJsonBuffer<200> jsonBuffer;
+  JsonObject& root = jsonBuffer.parseObject(payload);
+  if(!root.success())
+  {
+    Serial.println("parseObject() failed!");
+    return;
+  }
+
+  String name = root["name"].asString();
+  int value = root["value"];
+  
+  if(name == "nodeMCU") {
+    if(value == 0){
+      digitalWrite(RelayPin, HIGH);
+    }
+    if(value == 1){
+      digitalWrite(RelayPin, LOW);
+    }
+  }
 } //end callback
 
 void reconnect() {
@@ -52,8 +69,7 @@ void reconnect() {
   while (!client.connected()) 
   {
     Serial.print("Attempting MQTT connection...");
-    // Create a random client ID
-    String clientId = "ESP8266Client-";
+    String clientId = "nodeMCU-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
     //if you MQTT broker has clientID,username and password
@@ -63,7 +79,7 @@ void reconnect() {
       Serial.println("connected");
       Serial.println("--------------------------------------");
      //once connected to MQTT broker, subscribe command if any
-      client.subscribe("stat/weather");
+      client.subscribe("onoff/nodeMCU");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -78,6 +94,7 @@ void setup() {
   Serial.begin(115200);
   setup_wifi();
   client.setServer(mqtt_server, 1883);
+  pinMode(RelayPin, OUTPUT); //relay
 }
 
 void loop() {

@@ -11,10 +11,10 @@ class RSwtich extends Component {
 
     handleToggle(e){
         if(e){
-            this.props.onToggle(this.props.name, '1')
+            this.props.onToggle(this.props.name, 1)
         }
         else{
-            this.props.onToggle(this.props.name, '0')
+            this.props.onToggle(this.props.name, 0)
         }
     }
 

@@ -1,0 +1,11 @@
+.AddThingForm {
+    padding: 30px;
+    .Buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        .AddButton{
+            margin-right: 10px;
+        }
+    }
+}

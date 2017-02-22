@@ -11,7 +11,7 @@ class SwitchList extends Component {
         //testing
         this.state = {
             switches: [
-                {name: 'Switch1', value: 1},
+                {name: 'nodeMCU', value: 1},
                 {name: 'Switch2', value: 0},
                 {name: 'Switch3', value: 1},
                 {name: 'Switch4', value: 0},

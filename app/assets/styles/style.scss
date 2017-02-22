@@ -1,4 +1,3 @@
-@import "theme.scss";
 @import "fonts.scss";
 
 html, body, div, span, applet, object, iframe,
@@ -19,9 +18,8 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-    font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto Light', Tahoma, Geneva, Verdana, sans-serif;
 	vertical-align: baseline;
-    background: $background-color;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

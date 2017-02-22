@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
 
 import App from './components/app'
 
@@ -10,6 +12,8 @@ import 'font-awesome/css/font-awesome.css'
 const root = document.getElementById('app')
 
 const RedBox = require('redbox-react').default
+injectTapEventPlugin()
+
 try{
   ReactDOM.render(
     <App /> 

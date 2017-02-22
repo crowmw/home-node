@@ -1,16 +1,15 @@
 import React, {Component} from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import Paper from 'material-ui/Paper'
 
 import mqtt from './mqttClient'
 
-import Banner from './banner'
-import Clock from './clock'
-import Climate from './climate'
-import RSwitch from './switch'
-import SwitchList from './switchList'
-import ProbeList from './probesList'
-
 import './../assets/styles/style.scss'
 import './style.scss'
+
+import TopBar from './topBar'
+import ThingsList from './thingsList'
+import AddThingForm from './addThingForm'
 
 class App extends Component {
     componentWillUnmount(){
@@ -19,16 +18,15 @@ class App extends Component {
 
     render() {
         return (
-            <div className='App'>
-                <Banner text="IoT Home" />
-                <Clock />
-                <div className='climate-content'>
-                    <Climate iconName='sun-o' temp='-10' humi='15'/>
-                    <Climate iconName='home' temp='22' humi='33'/>
+            <MuiThemeProvider>
+                <div className='App'>
+                    <Paper zDepth={2}>
+                        <TopBar />
+                        <ThingsList />
+                        <AddThingForm />
+                    </Paper>
                 </div>
-                <ProbeList />
-                <SwitchList />
-            </div>
+            </MuiThemeProvider>
         );
     }
 }
