@@ -33,14 +33,13 @@ const webpack = require('webpack')
 const config = require('./webpack.config.js')
 const compiler = webpack(config)
 
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true, publicPath: config.output.publicPath
-}));
+// app.use(require("webpack-dev-middleware")(compiler, {
+//   noInfo: true, publicPath: config.output.publicPath
+// }));
 
-app.use(require("webpack-hot-middleware")(compiler, {
-  log: console.log, heartbeat: 10 * 1000
-}));
-
+// app.use(require("webpack-hot-middleware")(compiler, {
+//   log: console.log, heartbeat: 10 * 1000
+// }));
 
 router(app)
 

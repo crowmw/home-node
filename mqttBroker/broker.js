@@ -39,7 +39,7 @@ broker.on('clientConnected', clientConnected)
 broker.on('clientDisconnected', clientDisconnected)
 
 broker.on('published', function(packet, client){
-    // console.log(chalk.gray(moment().format('DD.MM.YYYY hh:mm:ss')+ ' - ') + chalk.blue(packet.topic)+'  ' + packet.payload.toString())
+    console.log(chalk.gray(moment().format('DD.MM.YYYY hh:mm:ss')+ ' - ') + chalk.blue(packet.topic)+'  ' + packet.payload.toString())
     // switch(packet.topic) {
     //     case 'stat/weather':
     //         stat.saveWeather(packet.payload.toString())
@@ -48,6 +48,9 @@ broker.on('published', function(packet, client){
 })
 
 function brokerReady() {
+    // broker.authenticate = authenticate
+    // broker.authorizePublish = authorizePublish
+    // broker.authorizeSubscribe = authorizeSubscribe
     console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
 }
 
@@ -59,3 +62,19 @@ function clientDisconnected(clientId) {
     // client.clientDisconnected(clientId.id)
 }
 
+const authenticate = function(client, username, password, callback){
+    console.log('AUTHENTICATE')
+    var authorized = (username === 'alice' && password.toString() === 'secret') //TODO check user
+    if(authorized) client.user = username
+    callback(null, authorized)
+}
+
+const authorizePublish = function(client, topic, payload, callback){
+    console.log('AUTHORIZE_PUBLISH')
+    callback(null, client.user == topic.split('/')[0])
+}
+
+const authorizeSubscribe = function(client, topic, callback){
+    console.log('AUTHORIZE_SUBSCRIBE')
+    callback(null, client.user == topic.split('/')[0])
+}

@@ -9,7 +9,7 @@
     "build": "webpack -p",
     "dev": "nodemon server.js",
     "test-client": "node ./clients/nodeJS/client.js",
-    "broker": "nodemon mqttBroker/index.js"
+    "broker": "nodemon mqttBroker/broker.js"
   },
   "repository": {
     "type": "git",
@@ -31,12 +31,16 @@
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "ip": "^1.1.4",
+    "jwt-simple": "^0.5.1",
     "material-ui": "^0.17.0",
     "mocha": "^3.2.0",
     "moment": "^2.17.1",
     "mongoose": "^4.7.6",
     "mosca": "^2.2.0",
     "mqtt": "^2.3.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0",
     "rc-switch": "^1.4.3",
     "react": "^15.4.2",
     "react-burger-menu": "^1.10.10",
