@@ -8,7 +8,8 @@
     "start": "node server.js",
     "build": "webpack -p",
     "dev": "nodemon server.js",
-    "test-client": "node ./clients/nodeJS/client.js"
+    "test-client": "node ./clients/nodeJS/client.js",
+    "broker": "nodemon mqttBroker/index.js"
   },
   "repository": {
     "type": "git",

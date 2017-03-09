@@ -8,7 +8,6 @@ const mongoose = require('mongoose')
 const ip = require('ip')
 
 const router = require('./router')
-const mqttBroker = require('./mqtt/mqttBroker')
 
 //DB Setup
 mongoose.Promise = global.Promise;
@@ -21,7 +20,7 @@ let options = {
       }
     }
 }
-mongoose.connect('mongodb://localhost:27017/home-node', options)
+mongoose.connect('mongodb://localhost:27017/mqtt', options)
 //App Setup
 const app = express()
 
@@ -46,8 +45,6 @@ app.use(require("webpack-hot-middleware")(compiler, {
 router(app)
 
 const server = http.createServer(app);
-//MOSCA Setup
-mqttBroker(server)
 
 server.listen(port);
 console.log(chalk.green('Server listening on: ' + ip.address() + ':' + port))
