@@ -1,4 +1,5 @@
 const authentication = require('./controllers/authentication')
+const user = require('./controllers/user')
 const passportService = require('./services/passport')
 const path = require('path')
 const passport = require('passport')

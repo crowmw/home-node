@@ -7,9 +7,9 @@
     "test": "mocha tests/**/*.test.js",
     "start": "node server.js",
     "build": "webpack -p",
-    "dev": "nodemon server.js",
     "test-client": "node ./clients/nodeJS/client.js",
-    "broker": "nodemon mqttBroker/broker.js"
+    "broker": "node mqttBroker/broker.js",
+    "client": "nodemon clients/nodeJS/client.js"
   },
   "repository": {
     "type": "git",

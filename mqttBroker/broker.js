@@ -3,6 +3,7 @@ const http = require('http')
 const chalk = require('chalk')
 const ip = require('ip')
 const moment = require('moment')
+const { authenticate, authorizePublish, authorizeSubscribe } = require('./authentication')
 
 const database = {
     type: 'mongo',
@@ -48,9 +49,9 @@ broker.on('published', function(packet, client){
 })
 
 function brokerReady() {
-    // broker.authenticate = authenticate
-    // broker.authorizePublish = authorizePublish
-    // broker.authorizeSubscribe = authorizeSubscribe
+    broker.authenticate = authenticate
+    broker.authorizePublish = authorizePublish
+    broker.authorizeSubscribe = authorizeSubscribe
     console.log(chalk.cyan('MQTT Broker running on: ' + ip.address() + ':' + brokerPort))
 }
 
@@ -62,19 +63,20 @@ function clientDisconnected(clientId) {
     // client.clientDisconnected(clientId.id)
 }
 
-const authenticate = function(client, username, password, callback){
-    console.log('AUTHENTICATE')
-    var authorized = (username === 'alice' && password.toString() === 'secret') //TODO check user
-    if(authorized) client.user = username
-    callback(null, authorized)
-}
+// const authenticate = function(client, username, password, callback){
+//     console.log('AUTHENTICATE')
 
-const authorizePublish = function(client, topic, payload, callback){
-    console.log('AUTHORIZE_PUBLISH')
-    callback(null, client.user == topic.split('/')[0])
-}
+//     var authorized = (username === 'alice' && password.toString() === 'secret') //TODO check user
+//     if(authorized) client.user = username
+//     callback(null, authorized)
+// }
 
-const authorizeSubscribe = function(client, topic, callback){
-    console.log('AUTHORIZE_SUBSCRIBE')
-    callback(null, client.user == topic.split('/')[0])
-}
+// const authorizePublish = function(client, topic, payload, callback){
+//     console.log('AUTHORIZE_PUBLISH')
+//     callback(null, client.user == topic.split('/')[0])
+// }
+
+// const authorizeSubscribe = function(client, topic, callback){
+//     console.log('AUTHORIZE_SUBSCRIBE')
+//     callback(null, client.user == topic.split('/')[0])
+// }
